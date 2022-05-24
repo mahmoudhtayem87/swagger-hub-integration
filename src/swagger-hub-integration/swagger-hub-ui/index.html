@@ -1,0 +1,47 @@
+[#assign isEdit=false]
+[#if themeDisplay.isSignedIn()]
+[#assign req = request.getRequest()]
+[#assign originalRequest = portalUtil.getOriginalServletRequest(req)]
+[#if originalRequest.getParameter("p_l_mode")??]
+[#assign isEdit=true]
+[/#if]
+[/#if]
+[#if !isEdit]
+<style>
+  .URLInputContainer
+  {
+    display:none!important;
+  }
+</style>
+[/#if]
+<div class="URLInputContainer p-4 bg-info text-light">
+  <div>
+    Please provider your API swagger file URL below
+  </div>
+  <div class="swaggerlink" data-lfr-editable-id="swaggerLink" data-lfr-editable-type="text">
+  </div>
+</div>
+[#if !isEdit]
+<link rel="stylesheet" type="text/css" href="[resources:swagger-ui.css]">
+
+<div id="swagger-ui"></div>
+
+<script src="[resources:swagger-ui-bundle.js]"></script>
+<script src="[resources:swagger-ui-standalone-preset.js]"></script>
+
+
+<script>
+  window.onload = function() {
+    var url = $(".swaggerlink").text().replaceAll(" ", "").replaceAll('\n',"");
+    const ui = SwaggerUIBundle({
+      url: url,
+      dom_id: '#swagger-ui',
+      presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+      ]
+    })
+    window.ui = ui
+  }
+</script>
+[/#if]

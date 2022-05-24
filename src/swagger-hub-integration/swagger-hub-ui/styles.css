@@ -1,0 +1,13 @@
+.swagger-hub-ui {
+  color: inherit;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+}
+.swaggerlink
+{
+  border-style:solid;
+  border-color:var(--light);
+  margin-top:1rem;
+}
